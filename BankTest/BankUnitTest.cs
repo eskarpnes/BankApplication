@@ -151,5 +151,21 @@ namespace BankTest
             //Act
             bank.Transfer(erlendAccount, mariaAccount, new Money(100));
         }
+
+        [TestMethod]
+        public void TestMoney()
+        {
+            //Setup
+            Money moneyDouble = new Money(50.0);
+            Money moneyInt = new Money(50);
+            Money moneyString = new Money("50");
+
+            Money expectedMoney = new Money(50.0);
+
+            //Assert
+            Assert.AreEqual(expectedMoney.GetValue(), moneyDouble.GetValue());
+            Assert.AreEqual(expectedMoney.GetValue(), moneyInt.GetValue());
+            Assert.AreEqual(expectedMoney.GetValue(), moneyString.GetValue());
+        }
     }
 }
